@@ -4,7 +4,3 @@ from flask_login import login_required, current_user
 from . import main
 from ..models import Pitch, Review, User
 from .. import db
-
-
-@main.route('/')
-@login_required

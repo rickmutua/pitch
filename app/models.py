@@ -34,6 +34,10 @@ class Pitch(db.Model):
 
     posted = db.Column(db.DateTime, default=datetime.utcnow)
 
+    category = db.relationship('PitchCategory', backref='user', lazy='dynamic')
+
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+
     def save_pitch(self):
         db.session.add(self)
         db.session.commit()
@@ -50,6 +54,7 @@ class Review(db.Model):
     pitch_idea = db.Column(db.String)
 
     posted = db.Column(db.DateTime, default=datetime.utcnow)
+
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 
     def save_review(self):
@@ -58,7 +63,7 @@ class Review(db.Model):
 
     @classmethod
     def get_reviews(cls, id):
-        reviews = Review.query.filter_by(movie_id=id).all()
+        reviews = Review.query.filter_by(pitch_id=id).all()
         return reviews
 
 
@@ -74,7 +79,7 @@ class User(UserMixin, db.Model):
 
     password_hash = db.Column(db.String(255))
 
-    category = db.relationship('PitchCategory', backref='user', lazy='dynamic')
+    pitch = db.relationship('Pitch', backref='user', lazy='dynamic')
 
     reviews = db.relationship('Review', backref='user', lazy='dynamic')
 
