@@ -1,6 +1,8 @@
 class Config:
 
-    pass
+    SQLALCHEMY_TRACK_MODIFICATIONS = False
+
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://erick:qwerty12345@localhost/pitch'
 
 
 class ProdConfig(Config):
@@ -9,6 +11,8 @@ class ProdConfig(Config):
 
 
 class DevConfig(Config):
+
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://erick:qwerty12345@localhost/pitch'
 
     DEBUG = True
 
