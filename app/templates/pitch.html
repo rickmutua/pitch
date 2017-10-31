@@ -10,5 +10,43 @@
 </head>
 <body>
 
+
+    {% block content %}
+
+        <div class="container">
+
+            <title> {{title}} </title>
+
+            <div class="row">
+
+                <a href="/category/{{pitch.id}}">
+                    {{pitch.title}}
+                </a>
+
+                <br>
+
+                <p> {{pitch.pitch}} </p>
+
+                <br>
+
+                <p> {{ user.username }} </p>
+
+            </div>
+
+
+            <hr>
+
+            <ul style="list-style-type: none;">
+
+                {{ macros displayReviewList(reviews }}
+
+            </ul>
+
+        </div>
+
+    {% endblock %}
+
+
+
 </body>
 </html>

@@ -16,5 +16,25 @@
           <link rel="stylesheet" href="{{url_for('static',filename='css/styles.css')}}">
     {% endblock %}
 
+
+
+    {% block content %}
+
+        <div class="container">
+
+            <title> {{title}} </title>
+
+            <h2> CATEGORIES </h2>
+
+            <ul style="list-style-type: none;">
+                {{ macro.displayCategoryList(category) }}
+            </ul>
+
+        </div>
+
+    {% endblock %}
+
+
+
 </body>
 </html>
