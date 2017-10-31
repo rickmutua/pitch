@@ -9,7 +9,7 @@ class PitchForm(FlaskForm):
 
     title = StringField('Pitch Title', validators=[Required()])
 
-    pitch = TextAreaField('Pitch Idea', db.String(300), validators=[Required()])
+    pitch = TextAreaField('Pitch Idea', validators=[Required()])
 
     submit = SubmitField('Submit')
 

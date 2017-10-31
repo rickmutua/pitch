@@ -11,9 +11,9 @@ def load_user(user_id):
     return User.query.get(int(user_id))
 
 
-class PitchCategory(db.Model):
+class Category(db.Model):
 
-    __tablename__ = 'category'
+    __tablename__ = 'categories'
 
     id = db.Column(db.Integer, primary_key = True)
 
@@ -30,11 +30,11 @@ class Pitch(db.Model):
 
     username = db.Column(db.String(255), index = True)
 
-    idea = db.Column(db.String(255))
+    idea = db.Column(db.String(300))
 
     posted = db.Column(db.DateTime, default=datetime.utcnow)
 
-    category = db.relationship('PitchCategory', backref='user', lazy='dynamic')
+    category = db.relationship('Category', backref='user', lazy='dynamic')
 
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 
