@@ -17,7 +17,7 @@ class Category(db.Model):
 
     id = db.Column(db.Integer, primary_key = True)
 
-    category_name = db.Column(db.String(255))
+    name = db.Column(db.String(255))
 
     pitch_id = db.Column(db.Integer, db.ForeignKey('pitch.id'))
 

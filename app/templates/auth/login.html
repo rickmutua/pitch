@@ -1,3 +1,6 @@
+{% extends 'auth/auth-base.html'%}
+{% import 'bootstrap/wtf.html' as wtf%}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,5 +9,49 @@
 </head>
 <body>
 
+
+{% block content %}
+
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-md-2"></div>
+
+            <div class="col-md-8">
+
+                <!--flash message -->
+                {% for message in get_flashed_messages() %}
+
+                    <div class="alert alert-danger">
+
+                        <button type="button" class="close" data-dismiss="alert"> &times; </button>
+
+                            {{ message }}
+
+                    </div>
+
+                {% endfor %}
+
+                <!-- login form -->
+
+                {{ wtf.quick_form(login_form) }}
+
+                <p> Don't have an account? </p>
+
+                <a href="{{ url_for('auth.register') }}"> Sign Up </a>
+
+            </div>
+
+            <div class="col-md-2"> </div>
+
+        </div>
+
+    </div>
+
+{% endblock%}
+
+
 </body>
+
 </html>
