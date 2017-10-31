@@ -30,11 +30,13 @@ class Pitch(db.Model):
 
     username = db.Column(db.String(255), index = True)
 
-    idea = db.Column(db.String(300))
+    pitch = db.Column(db.String(300))
 
     posted = db.Column(db.DateTime, default=datetime.utcnow)
 
     category = db.relationship('Category', backref='user', lazy='dynamic')
+
+    review = db.relationship('Review', backref='user', lazy='dynamic')
 
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 
@@ -53,7 +55,11 @@ class Review(db.Model):
     pitch_author = db.Column(db.String)
     pitch_idea = db.Column(db.String)
 
+    review = db.Column(db.String)
+
     posted = db.Column(db.DateTime, default=datetime.utcnow)
+
+    pitch_id = db.Column(db.Integer, db.ForeignKey('pitch.id'))
 
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 

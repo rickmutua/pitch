@@ -56,7 +56,7 @@ def new_pitch(id):
         title = form.title.data
         pitch = form.pitch.data
 
-        new_pitch = Pitch(idea = pitch, category=category, user=current_user, title=title)
+        new_pitch = Pitch(pitch = pitch, category=category, user=current_user, title=title)
 
         new_pitch.save_pitch()
 

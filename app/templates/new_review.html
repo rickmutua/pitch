@@ -1,3 +1,6 @@
+{% extends 'base.html' %}
+{% import "bootstrap/wtf.html" as wtf %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,6 +8,22 @@
     <title>Title</title>
 </head>
 <body>
+
+    {% block content %}
+
+        <div class="container">
+
+            <div class="row">
+
+                {{ wtf.quick_form(review_form) }}
+
+                {{ simplemde.load }}
+
+            </div>
+
+        </div>
+
+    {% endblock %}
 
 </body>
 </html>

@@ -1,10 +1,36 @@
+{% extends 'bootstrap/base.html' %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
     <meta charset="UTF-8">
-    <title>Title</title>
+
+    {% if title %}
+    <title> {{ title }} </title>
+
+    {% else %}
+    <title> Welcome to the best Movie Review website </title>
+
+    {% endif %}
+
 </head>
 <body>
+
+    {% block styles %}
+
+        {{ super() }}
+
+        {{ simplemde.css }}
+
+        {{ simplemde.js }}
+
+    {% endblock %}
+
+
+    {% block navbar %}
+        {% include 'navbar.html' %}
+    {% endblock %}
 
 </body>
 </html>
