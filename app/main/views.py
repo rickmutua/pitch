@@ -2,7 +2,7 @@ from flask import render_template, redirect, request, url_for, abort
 from flask_login import login_required, current_user
 
 from . import main
-from .forms import PitchForm, ReviewForm
+from .forms import PitchForm, ReviewForm, CategoryForm
 from ..models import Pitch, Review, User, Category
 from .. import db
 
@@ -26,7 +26,25 @@ def category(id):
 
     title = f'All pitches for {category.name}'
 
-    return render_template('group.html', category=category, pitch=pitch, title=title)
+    return render_template('category.html', category=category, pitch=pitch, title=title)
+
+
+@main.route('/category/new', methods=['GET','POST'])
+def new_category():
+
+    form = CategoryForm()
+
+    if form.validate_on_submit():
+
+        name = form.name.data
+
+        new_category = Category(name=name)
+
+        new_category.save_category()
+
+        return redirect(url_for('.index'))
+
+    return render_template('new_category.html', category_form=form)
 
 
 @main.route('/pitch/<int:id>')
@@ -43,11 +61,10 @@ def single_pitch(id):
 @main.route('/category/pitch/new/<int:id>', methods=['GET', 'POST'])
 def new_pitch(id):
 
-    category = Category.query.filter_by(id).first()
+    category = Category.query.filter_by(id=id).first()
 
     if category is None:
         abort(404)
-
 
     form = PitchForm()
 
@@ -64,7 +81,7 @@ def new_pitch(id):
 
     title = f'{category.id} pitch'
 
-    return render_template('new_pitch', title=title, pitch_form=form, category=category)
+    return render_template('new_pitch.html', title=title, pitch_form=form, category=category)
 
 
 @main.route('/pitch/review/new/<int:id>', methods=['GET', 'POST'])

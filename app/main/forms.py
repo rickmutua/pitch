@@ -21,3 +21,10 @@ class ReviewForm(FlaskForm):
     review = TextAreaField('Pitch Review', validators=[Required()])
 
     submit = SubmitField('Submit')
+
+
+class CategoryForm(FlaskForm):
+
+    name = StringField('Category Name', validators=[Required()])
+
+    submit = SubmitField('Submit')

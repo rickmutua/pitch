@@ -38,17 +38,14 @@ class Pitch(db.Model):
     __tablename__ = 'pitch'
 
     id = db.Column(db.Integer, primary_key = True)
-
     username = db.Column(db.String(255), index = True)
-
+    title = db.Column(db.String(200))
     pitch = db.Column(db.String(300))
 
     posted = db.Column(db.DateTime, default=datetime.utcnow)
 
     category_id = db.Column(db.Integer, db.ForeignKey('categories.id'))
-
     review_id = db.relationship('Review', backref='pitch', lazy='dynamic')
-
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 
     def save_pitch(self):
