@@ -12,7 +12,7 @@ from .. import db
 
 def index():
 
-    categories = Category.get_category()
+    categories = Category.get_category(id)
 
     return render_template('index.html', categories=categories)
 

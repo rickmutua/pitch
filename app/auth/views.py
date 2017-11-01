@@ -5,6 +5,8 @@ from ..models import User
 from .forms import LoginForm,RegistrationForm
 from . import auth
 
+from .. import db
+
 
 @auth.route('/login', methods=['GET', 'POST'])
 def login():
@@ -36,7 +38,8 @@ def register():
 
         user = User(email=form.email.data, username=form.username.data, password=form.password.data)
 
-        user.save_user()
+        db.session.add(user)
+        db.session.commit()
 
         return redirect(url_for('auth.login'))
 
