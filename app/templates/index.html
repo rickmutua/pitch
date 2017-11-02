@@ -7,6 +7,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display|Roboto+Slab|Slabo+27px" rel="stylesheet">
+
 </head>
 <body>
 
@@ -22,17 +25,29 @@
 
         <div class="container">
 
-            <title> {{title}} </title>
+            <div class="row">
 
-            <h2> CATEGORIES </h2>
+                <div class="col-sm-4 col-md-4 col-lg-4">
+                     <h2 style="font-family: 'Roboto Slab', serif;"> CATEGORIES </h2>
+                </div>
 
-            <ul style="list-style-type: none;">
+                <div class="col-sm-4 col-md-4 col-lg-6"></div>
+
+                <div class="col-sm-4 col-md-4 col-lg-2">
+                    <a class="btn btn-default" href="/category/new"> Create Category </a>
+                </div>
+
+            </div>
+
+            <hr>
+
+            <ul style="list-style-type: none; font-size: 30px; font-family: 'Slabo 27px', serif;">
                 {{ macro.displayCategoryList(categories) }}
             </ul>
 
             <hr>
 
-                <a href="/category/new"> Create Category </a>
+
         </div>
 
     {% endblock %}

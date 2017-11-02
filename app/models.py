@@ -65,10 +65,6 @@ class Review(db.Model):
 
     id = db.Column(db.Integer, primary_key = True)
 
-    pitch_id = db.Column(db.Integer)
-    pitch_author = db.Column(db.String)
-    pitch_idea = db.Column(db.String)
-
     review = db.Column(db.String)
 
     posted = db.Column(db.DateTime, default=datetime.utcnow)

@@ -51,11 +51,12 @@ def new_category():
 def single_pitch(id):
 
     single_pitch = Pitch.query.get(id)
+    reviews = Review.get_reviews(id)
 
     if single_pitch is None:
         abort (404)
 
-    return render_template('pitch.html', single_pitch=single_pitch)
+    return render_template('pitch.html', pitch=single_pitch, reviews=reviews)
 
 
 @main.route('/category/pitch/new/<int:id>', methods=['GET', 'POST'])
@@ -87,7 +88,7 @@ def new_pitch(id):
 @main.route('/pitch/review/new/<int:id>', methods=['GET', 'POST'])
 def new_review(id):
 
-    pitch = Pitch.query.filter_by(id).first()
+    pitch = Pitch.query.filter_by(id=id).first()
 
     if pitch is None:
         abort(404)
@@ -95,10 +96,10 @@ def new_review(id):
     form = ReviewForm()
 
     if form.validate_on_submit():
-        title = form.title.data
+
         review = form.review.data
 
-        new_review = Review(pitch_review=review, title=title, user=current_user)
+        new_review = Review(review=review, user=current_user)
 
         new_review.save_review()
 

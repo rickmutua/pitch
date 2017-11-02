@@ -1,3 +1,7 @@
+{% extends 'base.html'%}
+{% import 'macros.html' as macro%}
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,5 +10,19 @@
 </head>
 <body>
 
+
+    {% block content %}
+
+        <div class="container">
+
+          {{macro.displayReviews(reviews)}}
+
+        </div>
+
+    {% endblock %}
+
+
 </body>
+
 </html>
+

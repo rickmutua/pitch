@@ -15,32 +15,80 @@
 
         <div class="container">
 
-            <title> {{title}} </title>
+            <div class="row">
+
+                <div class="col-sm-4 col-md-4 col-lg-4">
+                     <h1 style="font-family: 'Roboto Slab', serif;"> PITCH {{pitch.title}} </h1>
+                </div>
+
+                <div class="col-sm-4 col-md-4 col-lg-6"></div>
+
+                <div class="col-sm-4 col-md-4 col-lg-2">
+                    <a class="btn btn-default" href="/pitch/review/new/{{pitch.id}}"> Write a review </a>
+                </div>
+
+            </div>
+
+                <hr>
+
+                <br>
 
             <div class="row">
 
-                <a href="/category/{{pitch.id}}">
-                    {{pitch.title}}
-                </a>
+                <div class="col-sm-4 col-md-4 col-lg-4">
+                     <h2 style="font-family: 'Roboto Slab', serif;"> {{pitch.title}} </h2>
+                </div>
 
-                <br>
+                <div class="col-sm-4 col-md-4 col-lg-6"></div>
 
-                <p> {{pitch.pitch}} </p>
+                <div class="col-sm-4 col-md-4 col-lg-2">
+                    <p> posted by <a href="/user/<uname>"> {{pitch.user.username}}</a> </p>
+                </div>
 
-                <br>
+            </div>
 
-                <p> {{ user.username }} </p>
+            <br>
+
+            <div class="row">
+
+                <div class="col-sm-1 col-md-1 col-lg-1"></div>
+
+                <div class="col-sm-10 col-md-10 col-lg-10">
+
+                    <p> {{pitch.pitch}} </p>
+
+                </div>
+
+                <div class="col-sm-1 col-md-1 col-lg-1"></div>
 
             </div>
 
 
+                <br> <br>
+
+
             <hr>
 
-            <ul style="list-style-type: none;">
+            <h3> Reviews </h3>
 
-                {{ macros displayReviewList(reviews) }}
 
-            </ul>
+            <div class="col-sm-1 col-md-1 col-lg-1"></div>
+
+                <div class="col-sm-10 col-md-10 col-lg-10">
+
+                    <ul style="list-style-type: none;">
+
+                        {{ macro.displayReviewList(reviews) }}
+
+                    </ul>
+
+                </div>
+
+                <div class="col-sm-1 col-md-1 col-lg-1"></div>
+
+            </div>
+
+            <hr>
 
         </div>
 

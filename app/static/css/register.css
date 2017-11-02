@@ -1,0 +1,6 @@
+body {
+  color: white;
+  background-image: url('/static/images/back.jpg');
+  font-family: 'Playfair Display', serif;
+  background-repeat: no-repeat;
+}
