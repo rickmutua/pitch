@@ -4,3 +4,7 @@ body {
   font-family: 'Playfair Display', serif;
   background-repeat: no-repeat;
 }
+
+p {
+   font-size: 18px;
+ }
