@@ -50,35 +50,19 @@
 
                         <li style="list-style-type: none;">
 
-                            <div class="row">
+                            <h2>
 
-                                <div class="col-sm-3 col-md-3 col-lg-3">
+                                <a href="{{url_for('main.single_pitch', id = pitch.id)}}">
+                                    {{pitch.title}}
+                                </a>
 
-                                    <h3>
-
-                                        <a href="{{url_for('main.single_pitch', id = pitch.id)}}">
-                                             {{pitch.title}}
-                                        </a>
-
-                                    </h3>
-
-                                </div>
-
-                                <div class="col-sm-3 col-md-3 col-lg-3">
-                                     <p> posted by {{ pitch.user.username }} </p>
-                                </div>
-
-                                <div class="col-sm-6 col-md-6 col-lg-6"></div>
-
-                            </div>
-
-
+                            </h2>
 
                             <br>
 
                             <p> {{pitch.pitch}} </p>
 
-
+                            <p> posted by {{ pitch.user.username }} </p>
 
                         </li>
 

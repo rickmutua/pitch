@@ -88,16 +88,17 @@ class User(UserMixin, db.Model):
     __tablename__ = 'users'
 
     id = db.Column(db.Integer, primary_key=True)
-
     username = db.Column(db.String(255), index = True)
-
     email = db.Column(db.String(255), unique=True, index=True)
+
+    bio = db.Column(db.String(255))
+    profile_pic_path = db.Column(db.String())
 
     password_hash = db.Column(db.String(255))
 
     pitch_id = db.relationship('Pitch', backref='user', lazy='dynamic')
-
     review_id = db.relationship('Review', backref='user', lazy='dynamic')
+    photos = db.relationship('PhotoProfile', backref='user', lazy="dynamic")
 
 
     @property
@@ -113,6 +114,14 @@ class User(UserMixin, db.Model):
 
     def __repr__(self):
         return f'User {self.username}'
+
+
+class PhotoProfile(db.Model):
+    __tablename__ = 'profile_photos'
+
+    id = db.Column(db.Integer,primary_key = True)
+    pic_path = db.Column(db.String())
+    user_id = db.Column(db.Integer,db.ForeignKey("users.id"))
 
 
 
