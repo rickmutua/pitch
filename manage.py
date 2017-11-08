@@ -4,9 +4,9 @@ from app.models import Pitch, Review, User, Category
 from flask_migrate import Migrate, MigrateCommand
 
 
-app = create_app('development')
+# app = create_app('development')
 
-# app = create_app('production')
+app = create_app('development')
 
 manager = Manager(app)
 manager.add_command('server',Server)

@@ -99,7 +99,7 @@ def new_review(id):
 
         review = form.review.data
 
-        new_review = Review(review=review, user=current_user)
+        new_review = Review(review=review, user_id=current_user.id, pitch_id=pitch.id)
 
         new_review.save_review()
 
@@ -149,6 +149,6 @@ def update_pic(uname):
         user.profile_pic_path = path
         user_photo = PhotoProfile(pic_path = path,user = user)
         db.session.commit()
-    return redirect(url_for('main.profile',uname=uname))
+    return redirect(url_for('main.profile',uname=uname, user_photo=user_photo))
 
 
